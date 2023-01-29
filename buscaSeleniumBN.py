@@ -29,7 +29,7 @@ while True:
 
    try:
       # Consultar o id do anuncio
-      div = navegador.find_element_by_xpath(f'//*[@id="ad-list"]/li[{indice}]/div/a') # Div master aonde está todas as informações   
+      div = navegador.find_element_by_xpath(f'//*[@id="listing-main-content-slot"]/div[11]/div/div/div/ul/li[{indice}]/div/a') # Div master aonde está todas as informações   
 
       # Id do anuncio 1
       id1 = div.get_attribute('data-lurker_list_id')
@@ -65,11 +65,11 @@ while True:
          titulo2 = str(titulo1)
          
          #valor do anuncio
-         div2 = navegador.find_element_by_xpath(f'//*[@id="ad-list"]/li[{indice}]/div/a/div/div[2]/div[1]/div[1]/div[2]/div/div/div[1]/span')
+         div2 = navegador.find_element_by_xpath(f'//*[@id="listing-main-content-slot"]/div[11]/div/div/div/ul/li[{indice}]/div/a/div/div[2]/div[1]/div[1]/div[2]/div/div/div[1]/span')
          # Local 
-         div3 = navegador.find_element_by_xpath(f'//*[@id="ad-list"]/li[{indice}]/div/a/div/div[2]/div[2]/div[3]/div[1]/div/div/span')
+         div3 = navegador.find_element_by_xpath(f'//*[@id="listing-main-content-slot"]/div[11]/div/div/div/ul/li[{indice}]/div/a/div/div[2]/div[2]/div[3]/div[1]/div/div/span')
          #postado
-         div4 = navegador.find_element_by_xpath(f'//*[@id="ad-list"]/li[{indice}]/div/a/div/div[2]/div[2]/div[3]/div[2]/span')
+         div4 = navegador.find_element_by_xpath(f'//*[@id="listing-main-content-slot"]/div[11]/div/div/div/ul/li[{indice}]/div/a/div/div[2]/div[2]/div[3]/div[2]/span')
 
          # Buscar o paramentros
          link    = div.get_attribute('href') # Link do anuncio
@@ -111,13 +111,6 @@ while True:
          descricao1 = descricao.get_attribute('innerText') # Descrição do anuncio
          descricao2 = BeautifulSoup(descricao1, 'html.parser') 
          descricao3 = str(descricao2) # Descrição do anuncio em string
-
-         # -------------------------- // --------------------------
-         # Identificação do vendedor
-         ''' vendedor = navegador.find_element_by_xpath('//*[@id="miniprofile"]/div/div/div/div[10]/div[3]/div/div/div/a') 
-         vendedor1 = vendedor.get_attribute('href')
-         vendedor2 = BeautifulSoup(vendedor1, 'html.parser') # Id do vendedor
-         vendedor3 = str(vendedor2)'''
 
          # -------------------------- // --------------------------
           #Mensagem formatada para postar no telegram
