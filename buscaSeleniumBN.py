@@ -102,9 +102,6 @@ while True:
          navegador.get(soup5)
          time.sleep(10)
 
-         # Mensagem a ser enviada no chat da Olx
-         msg = ['Opa, beleza?','o Game é lacrado ? selo original?','é o modelo slim?','tem alguma avaria?','de onde você é?','da pra retirar pessoalmente?',f'o valor do anuncio é  {consulta3} mesmo?','me passa seu WhatsApp ou me chama (11)97062.6825']
-
          # -------------------------- // --------------------------
          #Descrição do anuncio
          descricao = navegador.find_element_by_xpath('//*[@id="content"]/div[2]/div/div[2]/div[1]/div[28]/div/div/div')
@@ -126,48 +123,8 @@ while True:
          bot.sendMessage(-1001635303262, msgTelegram)   
 
          # -------------------------- // --------------------------
-         time.sleep(10)
-         # -------------------------- // --------------------------
-         #Função para enviar mensagens ao vendedor com anuncio SLIM
-         def mensagemOLX():
-            
-            try:
-               navegador.execute_script("document.getElementsByClassName('ad__pgs1hw-0 kDydGL')[0].click()")# se tiver botão compra
-               
-               for x in range(0,8):
-                  contadorMsg += 1
-                  time.sleep(random.randint(5,20))
-                  navegador.find_element_by_xpath('//*[@id="mercurie-app"]/div/div/div/div/div/div/div[3]/div[1]/div[3]/textarea').send_keys(msg[contadorMsg],'\n')
-               
-            except Exception as e:
-               navegador.execute_script("document.getElementsByClassName('sc-ifAKCX eUXUWN')[0].click()") # se tiver apenas o chat
-
-               for x in range(0,8):
-                  contadorMsg += 1    
-                  time.sleep(random.randint(5,20))
-                  navegador.find_element_by_xpath('//*[@id="mercurie-app"]/div/div/div/div/div/div/div[3]/div[1]/div[3]/textarea').send_keys(msg[contadorMsg],'\n')
-
-         # -------------------------- // --------------------------
-
-         # -------------------------- // --------------------------
-         
-         # Validação se se existe a palavra Slim para chamar no chat
-         if 'slim' in descricao3:
-            mensagemOLX()
-         elif 'SLIM' in descricao3:
-            mensagemOLX()
-         elif 'slim' in titulo2:
-            mensagemOLX()
-         elif 'SLIM' in titulo2:
-
-            time.sleep(10)
-            navegador.get(url)
-         else:
-            navegador.get(url)
-            print('Não é modelo Slim')
-
-            # -------------------------- // --------------------------      
-
+         time.sleep(5)
+         navegador.get(url)
       else:
          print('Não encontrou produto novo, produto anterior {}'.format(id_anuncio))    
          navegador.get(url)
@@ -178,7 +135,7 @@ while True:
    
    # -------------------------- // --------------------------      
    # Contagem para começar a nova busca
-   for i in range(300,-1,-1):
+   for i in range(30,-1,-1):
     sys.stdout.write("\rNova busca vai ser executada em: {}".format(i))
     sys.stdout.flush()
     time.sleep(1)
