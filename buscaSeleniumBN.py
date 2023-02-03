@@ -6,7 +6,6 @@ from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import telepot
 import time, sys
-import random
 
 options = webdriver.ChromeOptions()
 options.add_argument(r"--user-data-dir=C:\Users\Gilson Barbosa\AppData\Local\Google\Chrome\User Data\Profile 3") #e.g. 
@@ -28,6 +27,7 @@ input('Caso não esteja logado na conta, faça login e depois digite Enter: ')
 while True:
 
    try:
+      navegador.get(url)
       # Consultar o id do anuncio
       div = navegador.find_element_by_xpath(f'//*[@id="listing-main-content-slot"]/div[11]/div/div/div/ul/li[{indice}]/div/a') # Div master aonde está todas as informações   
 
@@ -36,8 +36,6 @@ while True:
       id2 = BeautifulSoup(id1, 'html.parser') # Id do anuncio
       id3 = str(id2)
       print('Primeiro id {}'.format(id2))
-
-      time.sleep(10)
       
       # -------------------------- // --------------------------
       # Ler o TXT para saber se o número é igual ao anterior
@@ -55,7 +53,7 @@ while True:
          print('ID atualizado {}'.format(id2))
       idAtual()
 
-      time.sleep(10)
+      #time.sleep(10)
 
       if id_anuncio != id3:
          
@@ -89,7 +87,7 @@ while True:
          consulta4 = str(soup3)# Local em string
          consulta5 = str(soup4)# Data da postagem em string
 
-         time.sleep(5)
+         #time.sleep(5)
          # -------------------------- // --------------------------
 
          # -------------------------- // --------------------------
@@ -100,7 +98,6 @@ while True:
          # -------------------------- // --------------------------
          #Acessa o link do primeiro anuncio
          navegador.get(soup5)
-         time.sleep(10)
 
          # -------------------------- // --------------------------
          #Descrição do anuncio
@@ -123,15 +120,13 @@ while True:
          bot.sendMessage(-1001635303262, msgTelegram)   
 
          # -------------------------- // --------------------------
-         time.sleep(5)
-         navegador.get(url)
+
       else:
          print('Não encontrou produto novo, produto anterior {}'.format(id_anuncio))    
-         navegador.get(url)
+         
 
    except Exception as e:
       print('Falhou a busca')
-      navegador.get(url)
    
    # -------------------------- // --------------------------      
    # Contagem para começar a nova busca
