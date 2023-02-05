@@ -6,6 +6,7 @@ from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 import telepot
 import time, sys
+from credenciais import chave,grupo
 
 options = webdriver.ChromeOptions()
 options.add_argument(r"--user-data-dir=C:\Users\Gilson Barbosa\AppData\Local\Google\Chrome\User Data\Profile 3") #e.g. 
@@ -112,12 +113,12 @@ while True:
 
          # -------------------------- // --------------------------
          # Bot telegram
-         chave = '5956509891:AAHZAV4IxY-s17fXnjc4Dfleip3sB0NHelU'
+         chave = chave
          bot = telepot.Bot(chave)
          resposta = bot.getUpdates()
 
          # Envia mensagem no telegram
-         bot.sendMessage(-1001635303262, msgTelegram)   
+         bot.sendMessage(grupo, msgTelegram)   
 
          # -------------------------- // --------------------------
 
